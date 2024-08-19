@@ -125,7 +125,7 @@ public class FromularioClientes extends javax.swing.JFrame {
                         .addComponent(txtPesquisarNome, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnPesquisarNome)
-                        .addContainerGap(262, Short.MAX_VALUE))))
+                        .addContainerGap(370, Short.MAX_VALUE))))
         );
         painel_consultaLayout.setVerticalGroup(
             painel_consultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,7 +324,7 @@ public class FromularioClientes extends javax.swing.JFrame {
                                         .addComponent(jLabel6)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 85, Short.MAX_VALUE))))
+                        .addGap(0, 193, Short.MAX_VALUE))))
         );
         painel_dados_pessoaisLayout.setVerticalGroup(
             painel_dados_pessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,14 +372,19 @@ public class FromularioClientes extends javax.swing.JFrame {
 
         painel_guias.addTab("Dados Pessoais", painel_dados_pessoais);
 
+        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mclg/sistema/imagens/add1.png"))); // NOI18N
         btnNovo.setText("NOVO");
 
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mclg/sistema/imagens/salvar.png"))); // NOI18N
         btnSalvar.setText("SALVAR");
 
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mclg/sistema/imagens/editar.png"))); // NOI18N
         btnEditar.setText("EDITAR");
 
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mclg/sistema/imagens/excluir.png"))); // NOI18N
         btnExcluir.setText("EXCLUIR");
 
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mclg/sistema/imagens/printer.png"))); // NOI18N
         btnImprimir.setText("IMPRIMIR");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -391,11 +396,11 @@ public class FromularioClientes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(btnNovo)
-                .addGap(57, 57, 57)
+                .addGap(39, 39, 39)
                 .addComponent(btnSalvar)
-                .addGap(62, 62, 62)
+                .addGap(47, 47, 47)
                 .addComponent(btnEditar)
-                .addGap(61, 61, 61)
+                .addGap(50, 50, 50)
                 .addComponent(btnExcluir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnImprimir)
@@ -414,7 +419,7 @@ public class FromularioClientes extends javax.swing.JFrame {
                     .addComponent(btnEditar)
                     .addComponent(btnExcluir)
                     .addComponent(btnImprimir))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
