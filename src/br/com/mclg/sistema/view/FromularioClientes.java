@@ -4,6 +4,9 @@
  */
 package br.com.mclg.sistema.view;
 
+import br.com.mclg.sistema.dao.ClientesDAO;
+import br.com.mclg.sistema.model.Clientes;
+
 /**
  *
  * @author mclga
@@ -62,6 +65,8 @@ public class FromularioClientes extends javax.swing.JFrame {
         cbUF = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         txtCpf = new javax.swing.JFormattedTextField();
+        jLabel15 = new javax.swing.JLabel();
+        txtComplemento = new javax.swing.JTextField();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
@@ -242,7 +247,7 @@ public class FromularioClientes extends javax.swing.JFrame {
             }
         });
 
-        cbUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbUF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
 
         jLabel13.setText("CPF:");
 
@@ -254,6 +259,14 @@ public class FromularioClientes extends javax.swing.JFrame {
         txtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCpfActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("Complemento:");
+
+        txtComplemento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtComplementoActionPerformed(evt);
             }
         });
 
@@ -288,7 +301,11 @@ public class FromularioClientes extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addGroup(painel_dados_pessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                                            .addComponent(txtCidade)))
+                                            .addComponent(txtCidade))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel15)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtComplemento))
                                     .addGroup(painel_dados_pessoaisLayout.createSequentialGroup()
                                         .addComponent(jLabel7)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -296,9 +313,7 @@ public class FromularioClientes extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cbUF, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(painel_dados_pessoaisLayout.createSequentialGroup()
                                 .addGroup(painel_dados_pessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(painel_dados_pessoaisLayout.createSequentialGroup()
@@ -324,7 +339,9 @@ public class FromularioClientes extends javax.swing.JFrame {
                                         .addComponent(jLabel6)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 193, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(cbUF, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 117, Short.MAX_VALUE))))
         );
         painel_dados_pessoaisLayout.setVerticalGroup(
             painel_dados_pessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -353,14 +370,17 @@ public class FromularioClientes extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
-                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painel_dados_pessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(painel_dados_pessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel15)
+                        .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painel_dados_pessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
@@ -377,6 +397,11 @@ public class FromularioClientes extends javax.swing.JFrame {
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mclg/sistema/imagens/salvar.png"))); // NOI18N
         btnSalvar.setText("SALVAR");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mclg/sistema/imagens/editar.png"))); // NOI18N
         btnEditar.setText("EDITAR");
@@ -473,6 +498,30 @@ public class FromularioClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPesquisarNomeActionPerformed
 
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        Clientes obj = new Clientes();
+        obj.setNome(txtNome.getText());
+        obj.setRg(txtRG.getText());
+        obj.setCpf(txtCpf.getText());
+        obj.setEmail(txtEmail.getText());
+        obj.setTelefone(txtTelefone.getText());
+        obj.setCelular(txtCelular.getText());
+        obj.setCep(txtCep.getText());
+        obj.setEndereco(txtEndereco.getText());
+        obj.setNumero(Integer.parseInt(txtNumero.getText()));
+        obj.setComplemento(txtComplemento.getText());
+        obj.setBairro(txtBairro.getText());
+        obj.setCidade(txtCidade.getText());
+        obj.setEstado(cbUF.getSelectedItem().toString());
+        
+        ClientesDAO dao = new ClientesDAO();
+        dao.Salvar(obj);
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void txtComplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtComplementoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtComplementoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -523,6 +572,7 @@ public class FromularioClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -542,6 +592,7 @@ public class FromularioClientes extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtCep;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtComplemento;
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
