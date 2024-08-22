@@ -75,6 +75,7 @@ public class FromularioClientes extends javax.swing.JFrame {
         btnImprimir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -150,6 +151,7 @@ public class FromularioClientes extends javax.swing.JFrame {
 
         jLabel2.setText("Código:");
 
+        txtCodigo.setEditable(false);
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoActionPerformed(evt);
@@ -396,7 +398,7 @@ public class FromularioClientes extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         painel_guias.addTab("Dados Pessoais", painel_dados_pessoais);
@@ -453,7 +455,7 @@ public class FromularioClientes extends javax.swing.JFrame {
                     .addComponent(btnEditar)
                     .addComponent(btnExcluir)
                     .addComponent(btnImprimir))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
