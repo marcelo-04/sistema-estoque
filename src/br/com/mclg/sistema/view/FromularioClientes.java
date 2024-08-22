@@ -7,7 +7,9 @@ package br.com.mclg.sistema.view;
 import br.com.mclg.sistema.dao.ClientesDAO;
 import br.com.mclg.sistema.model.Clientes;
 import br.com.mclg.sistema.utilitarios.Utilitarios;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,9 +17,30 @@ import javax.swing.JOptionPane;
  */
 public class FromularioClientes extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FromularioClientes
-     */
+    public void listar(){
+        ClientesDAO dao = new ClientesDAO();
+        List<Clientes> lista = dao.listar();
+        DefaultTableModel dados = (DefaultTableModel)tabela.getModel();
+        dados.setNumRows(0);
+        for (Clientes c: lista){
+            dados.addRow(new Object[]{
+            c.getId(),
+            c.getNome(),
+            c.getRg(),
+            c.getCpf(),
+            c.getEmail(),
+            c.getTelefone(),
+            c.getCelular(),
+            c.getCep(),
+            c.getEndereco(),
+            c.getNumero(),
+            c.getComplemento(),
+            c.getBairro(),
+            c.getCidade(),
+            c.getEstado()
+            });
+        }
+    }
     public FromularioClientes() {
         initComponents();
     }
@@ -39,7 +62,7 @@ public class FromularioClientes extends javax.swing.JFrame {
         txtPesquisarNome = new javax.swing.JTextField();
         btnPesquisarNome = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaClientes = new javax.swing.JTable();
+        tabela = new javax.swing.JTable();
         painel_dados_pessoais = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
@@ -77,6 +100,11 @@ public class FromularioClientes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -109,15 +137,15 @@ public class FromularioClientes extends javax.swing.JFrame {
 
         btnPesquisarNome.setText("Pesquisar");
 
-        tabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "id", "nome", "e-mail", "celular", "telefone", "cep", "endereço", "numero", "bairro", "cidade", "complemento", "UF", "RG", "CPF"
+                "Código", "Nome", "RG", "CPF", "Email", "Telefone", "Celular", "CEP", "Endereço", "Numero", "Complemento", "Bairro", "Cidade", "Estado"
             }
         ));
-        jScrollPane1.setViewportView(tabelaClientes);
+        jScrollPane1.setViewportView(tabela);
 
         javax.swing.GroupLayout painel_consultaLayout = new javax.swing.GroupLayout(painel_consulta);
         painel_consulta.setLayout(painel_consultaLayout);
@@ -573,6 +601,10 @@ public class FromularioClientes extends javax.swing.JFrame {
        utilitario.LimpaTela(painel_dados_pessoais);
     }//GEN-LAST:event_btnNovoActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        listar();
+    }//GEN-LAST:event_formWindowActivated
+
     /**
      * @param args the command line arguments
      */
@@ -637,7 +669,7 @@ public class FromularioClientes extends javax.swing.JFrame {
     private javax.swing.JPanel painel_consulta;
     private javax.swing.JPanel painel_dados_pessoais;
     private javax.swing.JTabbedPane painel_guias;
-    private javax.swing.JTable tabelaClientes;
+    private javax.swing.JTable tabela;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JFormattedTextField txtCelular;
     private javax.swing.JFormattedTextField txtCep;
