@@ -6,6 +6,7 @@ package br.com.mclg.sistema.view;
 
 import br.com.mclg.sistema.dao.ClientesDAO;
 import br.com.mclg.sistema.model.Clientes;
+import br.com.mclg.sistema.utilitarios.Utilitarios;
 import javax.swing.JOptionPane;
 
 /**
@@ -392,12 +393,13 @@ public class FromularioClientes extends javax.swing.JFrame {
                         .addComponent(jLabel11)
                         .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painel_dados_pessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13)
-                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(painel_dados_pessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(painel_dados_pessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12)
+                        .addComponent(txtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel13)
+                        .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -405,6 +407,11 @@ public class FromularioClientes extends javax.swing.JFrame {
 
         btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mclg/sistema/imagens/add1.png"))); // NOI18N
         btnNovo.setText("NOVO");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mclg/sistema/imagens/salvar.png"))); // NOI18N
         btnSalvar.setText("SALVAR");
@@ -527,6 +534,8 @@ public class FromularioClientes extends javax.swing.JFrame {
         
         ClientesDAO dao = new ClientesDAO();
         dao.Salvar(obj);
+        Utilitarios utilitario = new Utilitarios();
+        utilitario.LimpaTela(painel_dados_pessoais);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtComplementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtComplementoActionPerformed
@@ -558,6 +567,11 @@ public class FromularioClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Cliente não encontrado!");
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+       Utilitarios utilitario = new Utilitarios();
+       utilitario.LimpaTela(painel_dados_pessoais);
+    }//GEN-LAST:event_btnNovoActionPerformed
 
     /**
      * @param args the command line arguments
