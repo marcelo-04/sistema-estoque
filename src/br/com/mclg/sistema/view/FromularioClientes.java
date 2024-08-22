@@ -134,8 +134,18 @@ public class FromularioClientes extends javax.swing.JFrame {
                 txtPesquisarNomeActionPerformed(evt);
             }
         });
+        txtPesquisarNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesquisarNomeKeyReleased(evt);
+            }
+        });
 
         btnPesquisarNome.setText("Pesquisar");
+        btnPesquisarNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarNomeActionPerformed(evt);
+            }
+        });
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -604,6 +614,60 @@ public class FromularioClientes extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         listar();
     }//GEN-LAST:event_formWindowActivated
+
+    private void btnPesquisarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarNomeActionPerformed
+        
+        String nome = "%"+txtPesquisarNome.getText()+"%";
+        ClientesDAO dao = new ClientesDAO();
+        List<Clientes> lista = dao.filtrar(nome);
+        DefaultTableModel dados = (DefaultTableModel)tabela.getModel();
+        dados.setNumRows(0);
+        for (Clientes c: lista){
+            dados.addRow(new Object[]{
+            c.getId(),
+            c.getNome(),
+            c.getRg(),
+            c.getCpf(),
+            c.getEmail(),
+            c.getTelefone(),
+            c.getCelular(),
+            c.getCep(),
+            c.getEndereco(),
+            c.getNumero(),
+            c.getComplemento(),
+            c.getBairro(),
+            c.getCidade(),
+            c.getEstado()
+            });
+        }
+    }//GEN-LAST:event_btnPesquisarNomeActionPerformed
+
+    private void txtPesquisarNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisarNomeKeyReleased
+        
+        String nome = "%"+txtPesquisarNome.getText()+"%";
+        ClientesDAO dao = new ClientesDAO();
+        List<Clientes> lista = dao.filtrar(nome);
+        DefaultTableModel dados = (DefaultTableModel)tabela.getModel();
+        dados.setNumRows(0);
+        for (Clientes c: lista){
+            dados.addRow(new Object[]{
+            c.getId(),
+            c.getNome(),
+            c.getRg(),
+            c.getCpf(),
+            c.getEmail(),
+            c.getTelefone(),
+            c.getCelular(),
+            c.getCep(),
+            c.getEndereco(),
+            c.getNumero(),
+            c.getComplemento(),
+            c.getBairro(),
+            c.getCidade(),
+            c.getEstado()
+            });
+        }
+    }//GEN-LAST:event_txtPesquisarNomeKeyReleased
 
     /**
      * @param args the command line arguments
