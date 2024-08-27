@@ -181,7 +181,7 @@ public class FromularioClientes extends javax.swing.JFrame {
         jLabel6.setText("Telefone:");
 
         try {
-            txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)# ####-####")));
+            txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -472,6 +472,11 @@ public class FromularioClientes extends javax.swing.JFrame {
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mclg/sistema/imagens/editar.png"))); // NOI18N
         btnEditar.setText("EDITAR");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mclg/sistema/imagens/excluir.png"))); // NOI18N
         btnExcluir.setText("EXCLUIR");
@@ -726,6 +731,29 @@ public class FromularioClientes extends javax.swing.JFrame {
         txtCidade.setText(tabela.getValueAt(tabela.getSelectedRow(), 12).toString());
         cbUF.setSelectedItem(tabela.getValueAt(tabela.getSelectedRow(), 13).toString());
     }//GEN-LAST:event_tabelaMouseClicked
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        Clientes obj = new Clientes();
+        obj.setNome(txtNome.getText());
+        obj.setRg(txtRG.getText());
+        obj.setCpf(txtCpf.getText());
+        obj.setEmail(txtEmail.getText());
+        obj.setTelefone(txtTelefone.getText());
+        obj.setCelular(txtCelular.getText());
+        obj.setCep(txtCep.getText());
+        obj.setEndereco(txtEndereco.getText());
+        obj.setNumero(Integer.parseInt(txtNumero.getText()));
+        obj.setComplemento(txtComplemento.getText());
+        obj.setBairro(txtBairro.getText());
+        obj.setCidade(txtCidade.getText());
+        obj.setEstado(cbUF.getSelectedItem().toString());
+        obj.setId(Integer.valueOf(txtCodigo.getText()));
+        
+        ClientesDAO dao = new ClientesDAO();
+        dao.Editar(obj);
+        Utilitarios utilitario = new Utilitarios();
+        utilitario.LimpaTela(painel_dados_pessoais);
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
