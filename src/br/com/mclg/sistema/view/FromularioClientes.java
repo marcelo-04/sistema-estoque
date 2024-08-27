@@ -480,6 +480,11 @@ public class FromularioClientes extends javax.swing.JFrame {
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mclg/sistema/imagens/excluir.png"))); // NOI18N
         btnExcluir.setText("EXCLUIR");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/mclg/sistema/imagens/printer.png"))); // NOI18N
         btnImprimir.setText("IMPRIMIR");
@@ -742,18 +747,27 @@ public class FromularioClientes extends javax.swing.JFrame {
         obj.setCelular(txtCelular.getText());
         obj.setCep(txtCep.getText());
         obj.setEndereco(txtEndereco.getText());
-        obj.setNumero(Integer.parseInt(txtNumero.getText()));
+        obj.setNumero(Integer.valueOf(txtNumero.getText()));
         obj.setComplemento(txtComplemento.getText());
         obj.setBairro(txtBairro.getText());
         obj.setCidade(txtCidade.getText());
         obj.setEstado(cbUF.getSelectedItem().toString());
-        obj.setId(Integer.valueOf(txtCodigo.getText()));
+        obj.setId(Integer.parseInt(txtCodigo.getText()));
         
         ClientesDAO dao = new ClientesDAO();
         dao.Editar(obj);
         Utilitarios utilitario = new Utilitarios();
         utilitario.LimpaTela(painel_dados_pessoais);
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        Clientes obj = new Clientes();
+        obj.setId(Integer.valueOf(txtCodigo.getText()));
+        ClientesDAO dao = new ClientesDAO();
+        dao.Excluir(obj);
+        Utilitarios utilitarios = new Utilitarios();
+        utilitarios.LimpaTela(painel_dados_pessoais);
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments

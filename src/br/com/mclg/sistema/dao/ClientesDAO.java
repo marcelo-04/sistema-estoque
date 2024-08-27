@@ -89,9 +89,23 @@ public class ClientesDAO {
         }
     }
     
+    public void Excluir(Clientes obj){
+        try {
+            String sql = "delete from tb_clientes where id=?";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, obj.getId());
+            stmt.execute();
+            stmt.close();
+            JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso!");
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERRO ao excluir o cliente"+e);
+        }
+    }
+    
     public Clientes BuscarCliente(String nome){
         try {
-            String sql = "select * from tb_clientes where nome = ?";
+            String sql = "select * from tb_clientes where nome=?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, nome);
             ResultSet rs = stmt.executeQuery();
